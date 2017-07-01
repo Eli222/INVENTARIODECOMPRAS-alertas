@@ -1,111 +1,54 @@
 package codigohernancho.app.prueba.com.inventariodecompras;
 
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class ENTRADAS extends AppCompatActivity {
-
-    EditText codigoABuscar;
-    EditText nombreProductoABuscar;
-    EditText cantidadARegistrar;
-    EditText stockMax;
-    EditText nombreProducto;
-    EditText marca;
-    EditText unidad;
-    EditText descripcion;
-    EditText stockMin;
-    Button adicionar;
-
-
-    public ENTRADAS()
-    {
-//        createProducto();
-    }
+    DatabaseHelper myDB;
+    EditText edit_Producto_ID;
+    EditText edit_Producto_Actual;
+    EditText edit_EXP_Ano;
+    EditText edit_EXP_Mes;
+    EditText edit_EXP_Dia;
+    Button btnAddData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entradas);
+        myDB = new DatabaseHelper(this);
 
-
-        codigoABuscar = (EditText) findViewById(R.id.txtcodigoABuscar);
-        nombreProductoABuscar = (EditText) findViewById(R.id.txtnombreProductoABuscar);
-        cantidadARegistrar = (EditText) findViewById(R.id.txtcantidad);
-
-
-        stockMax = (EditText) findViewById(R.id.txtstockActualProductoEncontrado);
-        stockMax.setEnabled(false);
-
-        nombreProducto = (EditText) findViewById(R.id.txtnombreProductoEncontrado);
-        nombreProducto.setEnabled(false);
-
-        marca = (EditText) findViewById(R.id.txtmarcaProductoEncontrado);
-        marca.setEnabled(false);
-
-        unidad = (EditText) findViewById(R.id.txtunidadProductoEncontrado);
-        unidad.setEnabled(false);
-
-        descripcion = (EditText) findViewById(R.id.txtdescripcionProductoEncontrado);
-        descripcion.setEnabled(false);
-
-        stockMin = (EditText) findViewById(R.id.txtstockMinProductoEncontrado);
-        stockMin.setEnabled(false);
-
-
-
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_entradas, menu);
-        return  true;
+        edit_Producto_ID = (EditText) findViewById(R.id.editText_Producto_ID);
+        edit_Producto_Actual = (EditText) findViewById(R.id.editText_Producto_Actual);
+        edit_EXP_Ano = (EditText) findViewById(R.id.editText_EXP_Ano);
+        edit_EXP_Mes = (EditText) findViewById(R.id.editText_EXP_Mes);
+        edit_EXP_Dia = (EditText) findViewById(R.id.editText_EXP_Dia);
+        btnAddData = (Button) findViewById(R.id.button_Insert_Data);
+        AddData();
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-            {
-                this.finish();
-                return true;
-            }
-
-            case R.id.action_add:
-            {
-                String stockMa= stockMax.getText().toString();
-                String cant= cantidadARegistrar.getText().toString();
-                String cod= codigoABuscar.getText().toString();
-                String nomprod = nombreProducto.getText().toString();
-                String marc= marca.getText().toString();
-                String unid= unidad.getText().toString();
-                String descr= descripcion.getText().toString();
-                String sockMi= stockMin.getText().toString();
-
-                Toast.makeText(this, "El usuario es: "+nomprod+" "+marc+" "+unid, Toast.LENGTH_LONG ).show();
-
-                return  true;
-            }
-            default:
-            {
-                return  super.onOptionsItemSelected(item);
-            }
-        }
-
-
+    public  void AddData() {
+        btnAddData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean isInserted = myDB.insertData3(
+                                Integer.parseInt(edit_Producto_ID.getText().toString()),
+                                Integer.parseInt(edit_Producto_Actual.getText().toString()),
+                                Integer.parseInt(edit_EXP_Ano.getText().toString()),
+                                Integer.parseInt(edit_EXP_Mes.getText().toString()),
+                                Integer.parseInt(edit_EXP_Dia.getText().toString()));
+                        if(isInserted == true)
+                            Toast.makeText(ENTRADAS.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(ENTRADAS.this,"Data not Inserted",Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
     }
 
 }

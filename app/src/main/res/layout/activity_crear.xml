@@ -45,32 +45,33 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:shrinkColumns="*"  android:stretchColumns="*">
+android:shrinkColumns="*"  android:stretchColumns="*"
+    android:weightSum="1">
 
 
-<TableRow
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:text="SKU?"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:text="SKU?"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/editText_SKU"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="123" />
+        <EditText
+            android:id="@+id/editText_SKU"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="123" />
 
-</TableRow>
+    </TableRow>
 
-<TableRow
+    <TableRow
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -159,21 +160,6 @@ android:shrinkColumns="*"  android:stretchColumns="*">
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alerta Max Stock?"
-        android:textAlignment="center"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/editText_Alerta_Max_Stock"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="123" />
 </TableRow>
 
 <TableRow
@@ -184,7 +170,7 @@ android:shrinkColumns="*"  android:stretchColumns="*">
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alerta Low Useage Q?"
+        android:text="Alerta menor consumo"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -206,7 +192,7 @@ android:shrinkColumns="*"  android:stretchColumns="*">
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alerta Low Use Dias?"
+        android:text="Alerta mayor consumo"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -227,7 +213,7 @@ android:shrinkColumns="*"  android:stretchColumns="*">
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alerta Inactivity Dias?"
+        android:text="Alerta Inactividad Dias?"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -248,7 +234,7 @@ android:shrinkColumns="*"  android:stretchColumns="*">
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alerta Dias Before Expiration?"
+        android:text="Alerta Dias antes Vencimiento?"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -277,7 +263,7 @@ android:shrinkColumns="*"  android:stretchColumns="*">
         android:id="@+id/checkBox_Monitor_Alertas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check=Yes" />
+        android:text="Check=si" />
 </TableRow>
 
 <TableRow
@@ -289,8 +275,9 @@ android:shrinkColumns="*"  android:stretchColumns="*">
 <Button
     android:id="@+id/button_Insert_Data"
     android:layout_width="60dp"
-    android:layout_height="wrap_content"
-    android:text="Insert Data" />
+    android:layout_height="15dp"
+    android:text="Insert Data"
+    android:layout_weight="0.14" />
 
  </TableLayout>
 

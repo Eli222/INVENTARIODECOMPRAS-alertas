@@ -1,9 +1,10 @@
 package codigohernancho.app.prueba.com.inventariodecompras;
-
+// Codigo Elianeth para crear tabla para de prodcutos con detalles y alertas
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,7 +21,9 @@ public class CREAR extends AppCompatActivity {
     EditText editAlerta_Low_Consump_Time_Dias_SP;
     EditText editAlerta_Inactivity_Time_Dias_SP;
     EditText editAlerta_Expiration_Dias_Before_SP;
-    EditText editMonitor_Alertas;
+    CheckBox editMonitor_Alertas;
+    int Monitor_Alertas;
+
     Button btnAddData;
 
     @Override
@@ -35,12 +38,15 @@ public class CREAR extends AppCompatActivity {
         editUnidad = (EditText) findViewById(R.id.editText_Unidad);
         //  editFoto = (EditText) findViewById(R.id.editText_Foto);
         editAlerta_Min_Stock_SP = (EditText) findViewById(R.id.editText_Alerta_Min_Stock);
-        editAlerta_Max_Stock_SP = (EditText) findViewById(R.id.editText_Alerta_Max_Stock);
+        //editAlerta_Max_Stock_SP = (EditText) findViewById(R.id.editText_Alerta_Max_Stock);
         editAlerta_Low_Consump_Quantity_SP = (EditText) findViewById(R.id.editText_Alerta_Low_Consump_Quantity_SP);
         editAlerta_Low_Consump_Time_Dias_SP = (EditText) findViewById(R.id.editText_Alerta_Low_Consump_Time_Dias_SP);
         editAlerta_Inactivity_Time_Dias_SP = (EditText) findViewById(R.id.editText_Alerta_Inactivity_Time_Dias_SP);
         editAlerta_Expiration_Dias_Before_SP = (EditText) findViewById(R.id.editText_Alerta_Expiration_Dias_Before_SP);
-        editMonitor_Alertas = (EditText) findViewById(R.id.editText_Nombre);
+        editMonitor_Alertas = (CheckBox) findViewById(R.id.checkBox_Monitor_Alertas);
+        if (editMonitor_Alertas.isChecked())
+                Monitor_Alertas =1;
+        else    Monitor_Alertas =0;
         btnAddData = (Button) findViewById(R.id.button_Insert_Data);
         AddData();
     }
@@ -60,7 +66,8 @@ public class CREAR extends AppCompatActivity {
                                 Integer.parseInt(editAlerta_Low_Consump_Quantity_SP.getText().toString()),
                                 Integer.parseInt(editAlerta_Low_Consump_Time_Dias_SP.getText().toString()),
                                 Integer.parseInt(editAlerta_Inactivity_Time_Dias_SP.getText().toString()),
-                                Integer.parseInt(editAlerta_Expiration_Dias_Before_SP.getText().toString()));
+                                Integer.parseInt(editAlerta_Expiration_Dias_Before_SP.getText().toString()),
+                                Monitor_Alertas);
                         if(isInserted == true)
                             Toast.makeText(CREAR.this,"Data Inserted",Toast.LENGTH_LONG).show();
                         else
